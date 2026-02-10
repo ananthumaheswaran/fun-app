@@ -42,7 +42,7 @@ function App() {
         {/* Emoji */}
         <div className="img-wrapper">
           <img
-            src="/images/something.png"
+            src={`${import.meta.env.BASE_URL}images/something.png`}
             alt="cute bear"
             draggable="false"
             tabIndex={-1}
@@ -104,7 +104,7 @@ function App() {
           <div className="card text-center shadow-xl animate-bounce">
             {/* GIF */}
             <img
-              src="/gifs/lal-laugh.gif" // 🔁 your GIF path
+              src={`${import.meta.env.BASE_URL}gifs/lal-laugh.gif`}
               alt="Yay"
               draggable="false"
               tabIndex={-1}

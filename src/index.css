@@ -20,7 +20,6 @@ body {
   margin: 0;
   padding: 0;
   height: 100%;
-  overflow: hidden;
   font-family: "Poppins", sans-serif;
   overflow-x: hidden;
 }
@@ -41,16 +40,6 @@ button:hover {
 button:focus,
 button:focus-visible {
   outline: none;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
 }
 
 @media (max-width: 425px) {
