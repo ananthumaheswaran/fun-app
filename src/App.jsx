@@ -6,6 +6,8 @@ function App() {
   const [noPosition, setNoPosition] = useState({});
   const [yesClicked, setYesClicked] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
+  const [blast, setBlast] = useState(false);
+  const [memoryWall, setMemoryWall] = useState(false);
 
   const moveNoButton = () => {
     setEscaped(true);
@@ -59,8 +61,10 @@ function App() {
           <button
             onClick={() => {
               feedback();
+              setBlast(true);
               setYesClicked(true);
               setShowPopup(true);
+              setTimeout(() => setBlast(false), 800);
             }}
             className="yes-btn shadow-xl"
           >
@@ -101,10 +105,10 @@ function App() {
 
       {showPopup && (
         <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
-          <div className="card text-center shadow-xl animate-bounce">
+          <div className="card text-center shadow-xl">
             {/* GIF */}
             <img
-              src={`${import.meta.env.BASE_URL}gifs/lal-laugh.gif`}
+              src={`${import.meta.env.BASE_URL}gifs/me.gif`}
               alt="Yay"
               draggable="false"
               tabIndex={-1}
@@ -113,19 +117,70 @@ function App() {
             />
 
             {/* MESSAGE */}
-            <h2 className="yay-text">YAY! 🎉</h2>
+            <h2 className="yay-text"> YAY!🎉</h2>
 
             {/* OPTIONAL CLOSE */}
             <button
               onClick={() => {
                 feedback();
                 setShowPopup(false);
+                setMemoryWall(true);
+
                 resetApp();
               }}
               className="yes-btn shadow-xl"
             >
               Okay
             </button>
+          </div>
+        </div>
+      )}
+
+      {blast && (
+        <div className="confetti-container">
+          {Array.from({ length: 30 }).map((_, i) => (
+            <span
+              key={i}
+              className="confetti"
+              style={{
+                left: "50%",
+                top: "50%",
+                "--x": `${Math.random() * 400 - 200}px`,
+                "--y": `${Math.random() * 400 - 200}px`,
+                background: `hsl(${Math.random() * 360}, 80%, 60%)`,
+              }}
+            />
+          ))}
+        </div>
+      )}
+
+      {memoryWall && (
+        <div className="memory-wall">
+          <div className="memory-glass">
+            <button className="return-btn" onClick={() => setMemoryWall(false)}>
+              return
+            </button>
+
+            <h1 className="love-message">
+              I love you to the moon and the back
+            </h1>
+
+            <div className="wall-container">
+              {Array.from({ length: 12 }).map((_, i) => (
+                <div
+                  className="wall-polaroid"
+                  key={i}
+                  style={{
+                    "--rotate": `${Math.random() * 10 - 5}deg`,
+                  }}
+                >
+                  <img
+                    src={`${import.meta.env.BASE_URL}images/pic${i + 1}.jpg`}
+                    alt="memory"
+                  />
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       )}
