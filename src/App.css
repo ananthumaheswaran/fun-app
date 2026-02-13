@@ -237,7 +237,7 @@
   text-align: center;
   margin-bottom: 18px;
 
-  color: #b0005c; /* same as main heading */
+  color: #cb1774; /* same as main heading */
 
   text-shadow: 0 4px 12px rgba(176, 0, 92, 0.35);
 }
@@ -335,6 +335,7 @@
 
 .memory-glass {
   position: relative;
+  z-index: 2;
   width: 100%;
   max-width: 1000px;
   max-height: 90vh;
@@ -353,36 +354,96 @@
 
 .return-btn {
   position: absolute;
-  top: 20px;
-  left: 20px;
+  top: 25px;
+  left: 25px;
 
-  width: 10px;
-  height: 40px;
+  width: 60px !important;
+  height: 60px !important;
+
+  min-width: 60px;
+  min-height: 60px;
+
+  padding: 0 !important;
+  margin: 0;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  border-radius: 10%; /* THIS makes it round */
+  border-radius: 50% !important;
 
-  font-size: 12px;
-  font-weight: bold;
-  color: #d13184;
+  aspect-ratio: 1 / 1;
+
+  font-size: 16px;
+  line-height: 1;
+  color: #c66798;
 
   background: rgba(255, 255, 255, 0.25);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
 
   border: 1px solid rgba(255, 255, 255, 0.6);
-  box-shadow: 0 8px 20px rgba(255, 105, 180, 0.25);
+
+  box-shadow:
+    0 8px 20px rgba(255, 105, 180, 0.3),
+    inset 0 2px 6px rgba(255, 255, 255, 0.4);
 
   cursor: pointer;
   transition: all 0.25s ease;
-
-  padding: 0; /* important */
 }
 
 .return-btn:hover {
   transform: scale(1.12);
-  box-shadow: 0 10px 25px rgba(255, 20, 147, 0.5);
+  box-shadow:
+    0 10px 25px rgba(255, 20, 147, 0.6),
+    inset 0 2px 8px rgba(255, 255, 255, 0.5);
+}
+
+.love-rain {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 40;
+}
+
+.heart-fall {
+  position: absolute;
+  top: -10%;
+  animation: rain 4s linear infinite;
+}
+
+@keyframes rain {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(110vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+.memory-love-rain {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.memory-heart {
+  position: absolute;
+  top: -10%;
+  animation: memoryRain 5s linear infinite;
+}
+
+@keyframes memoryRain {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(120vh) rotate(360deg);
+    opacity: 0;
+  }
 }

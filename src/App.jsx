@@ -86,18 +86,18 @@ function App() {
       </div>
 
       {yesClicked && (
-        <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          {Array.from({ length: 40 }).map((_, i) => (
+        <div className="love-rain">
+          {Array.from({ length: 60 }).map((_, i) => (
             <span
               key={i}
-              className="emoji-fall"
+              className="heart-fall"
               style={{
                 left: Math.random() * 100 + "%",
                 animationDelay: Math.random() * 2 + "s",
-                fontSize: Math.random() * 20 + 24 + "px",
+                fontSize: Math.random() * 25 + 18 + "px",
               }}
             >
-              {["❤️"][i % 1]}
+              ❤️
             </span>
           ))}
         </div>
@@ -108,7 +108,7 @@ function App() {
           <div className="card text-center shadow-xl">
             {/* GIF */}
             <img
-              src={`${import.meta.env.BASE_URL}gifs/me.gif`}
+              src={`${import.meta.env.BASE_URL}gifs/ananthu.gif`}
               alt="Yay"
               draggable="false"
               tabIndex={-1}
@@ -117,7 +117,7 @@ function App() {
             />
 
             {/* MESSAGE */}
-            <h2 className="yay-text"> YAY!🎉</h2>
+            <h2 className="yay-text"> YAY!</h2>
 
             {/* OPTIONAL CLOSE */}
             <button
@@ -156,9 +156,25 @@ function App() {
 
       {memoryWall && (
         <div className="memory-wall">
+          <div className="memory-love-rain">
+            {Array.from({ length: 50 }).map((_, i) => (
+              <span
+                key={i}
+                className="memory-heart"
+                style={{
+                  left: Math.random() * 100 + "%",
+                  animationDelay: Math.random() * 3 + "s",
+                  fontSize: Math.random() * 25 + 18 + "px",
+                }}
+              >
+                ❤️
+              </span>
+            ))}
+          </div>
+
           <div className="memory-glass">
             <button className="return-btn" onClick={() => setMemoryWall(false)}>
-              return
+              ↩
             </button>
 
             <h1 className="love-message">
